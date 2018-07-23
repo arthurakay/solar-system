@@ -4,9 +4,9 @@ import React from 'react';
 import Lights from './scene/Lights';
 import Camera from './scene/Camera';
 import Events from './scene/Events';
-import Planet from'./scene/Planet';
+import Sphere from'./scene/Sphere';
 
-import texture_earth from './assets/textures/earth.jpg';
+import {Sun, Earth} from './utils/Planets';
 
 export default class ThreeJsContainer extends React.Component {
     glContainer = null;
@@ -22,7 +22,8 @@ export default class ThreeJsContainer extends React.Component {
 
     initWebGLRenderer() {
         this.renderer = new WebGLRenderer();
-        this.renderer.setSize(window.innerWidth - 10, window.innerHeight - 10);
+        console.log(this.glContainer);
+        this.renderer.setSize(this.glContainer.clientWidth, this.glContainer.clientHeight);
 
         // physically render
         this.glContainer.appendChild(this.renderer.domElement);
@@ -55,14 +56,17 @@ export default class ThreeJsContainer extends React.Component {
         this.controls = Events.initEvents(this.renderer, this.camera, this.rotating);
 
         // add things to the scene
-        Planet.renderPlanet(this.rotating, texture_earth);
+        Sphere.renderSphere(this.rotating, Sun);
+        Sphere.renderSphere(this.rotating, Earth);
     }
 
     render() {
         return (
-            <div>
-                <div ref={(el) => { this.glContainer = el; }} id="glContainer"></div>
-            </div>
+            <div
+                ref={(el) => { this.glContainer = el; }}
+                id="glContainer"
+                className="App-body"
+            />
         );
     }
 }

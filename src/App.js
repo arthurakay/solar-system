@@ -14,7 +14,7 @@ class App extends Component {
                     </p>
                 </header>
 
-                <ThreeJsContainer className="App-body" />
+                <ThreeJsContainer />
             </div>
         );
     }

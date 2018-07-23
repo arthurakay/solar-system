@@ -1,9 +1,10 @@
 import TrackballControls from './TrackballControls';
+import {minCameraDistance, maxCameraDistance} from '../utils/Constants';
 
 function initEvents(renderer, camera, object3D) {
     let controls = new TrackballControls(camera, document.body);
-    controls.minDistance = 100.0;
-    controls.maxDistance = 800.0;
+    controls.minDistance = minCameraDistance;
+    controls.maxDistance = maxCameraDistance;
     controls.dynamicDampingFactor = 0.1;
 
     initResize(renderer, camera);
