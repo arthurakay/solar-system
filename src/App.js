@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
+import ThreeJsContainer from './ThreeJsContainer';
 
 class App extends Component {
     render() {
@@ -13,10 +14,7 @@ class App extends Component {
                     </p>
                 </header>
 
-                <section className="App-body">
-                    the app
-                </section>
-
+                <ThreeJsContainer className="App-body" />
             </div>
         );
     }
